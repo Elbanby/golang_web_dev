@@ -6,7 +6,19 @@ import (
 )
 
 func simpleHandler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprint(w, "<h1>Welcome</h1>")
+	w.Header().Set("Content-Type", "text/html")
+
+	switch r.URL.Path {
+	case "/":
+		fmt.Fprint(w, "<h1>Welcome home!</h1>")
+	case "/contact":
+		fmt.Fprint(w, `
+						<h1>Contact info:</h1>
+						email: <a href="mailto:support@mail.com">Support</a>
+		`)
+	default:
+		fmt.Fprint(w, `<h1>404</h1>`)
+	}
 }
 
 func main() {
