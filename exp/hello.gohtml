@@ -1,0 +1,20 @@
+<h1>Hello, {{.Name}}!</h1>
+
+{{if ge .Age 18}}
+    <p>You are only allowed in this site since you are {{.Age}} years old!</p>
+ {{else}}
+    <p>Under Age, you can't access this site</p>
+{{end}}
+
+<ul>
+    {{range .Kids}}
+        <li>{{.}}</li>
+    {{end}}
+</ul>
+
+<h2>Contact info</h2>
+<ul>
+    {{range $type, $value := .Phones}}
+        <li>{{$type}}: {{$value}}</li>
+    {{end}}
+</ul>
