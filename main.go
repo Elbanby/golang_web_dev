@@ -30,6 +30,7 @@ func faq(w http.ResponseWriter, r *http.Request) {
 }
 
 func pageNotFound(w http.ResponseWriter, r *http.Request) {
+	w.WriteHeader(http.StatusNotFound)
 	w.Header().Set("Content-Type", "text/html")
 	fmt.Fprint(w, `<h1>You are lost</h1>`)
 }
